@@ -1,0 +1,84 @@
+
+<div class = 'container'>
+	<h3>Hello,<%=current_user.first_name%></h3>
+	<hr>
+	<h4>Create New Mission</h4>
+	<form action="/missions" method = "post">
+		<input type="hidden" name = "authenticity_token" value = "<%=form_authenticity_token%>">
+		<div class="form-group">
+			<label for="title">Mission title</label>
+			<input type="text" class="form-control" name = "title" id = "title">
+			
+		</div>
+		<div class="form-group">
+			<label for="interval_h">Mission alert interval(hours)</label>
+			<input type="text" class="form-control" name = "interval_h" id = "interval_h" placeholder = "hour" value="0">
+			<br>
+			<label for="interval_m">Mission alert interval(minutes)</label>
+			<input type="text" class="form-control" name = "interval_m" id = "interval_m" placeholder = "min" value="0">
+			
+		</div>
+		<div class="form-group">
+			<label for="times">How many times to alert</label>
+			<select name="times" id="times">
+				<option value=5>5</option>
+				<option value=10>10</option>
+			</select>
+			
+		</div>
+		<div class="form-group">
+			<label for="title">When shall we start</label><br>
+			Date:<input type="date" class="form-control" name = "when_start_date" id = "when_start" value = "<%=DateTime.now.to_date%>">
+			Time:<input type="time" class="form-control" name = "when_start_time" id = "when_start" >
+			
+		</div>
+		<div class="form-group">
+			<label for="title">How long will it last (days)</label>
+			<input type="text" class="form-control" name = "lasting" id = "lasting">
+		</div>
+		<div class="form-group">
+			<label for="nightmode">Night Mode</label>
+			<input type="radio" name = "night_mode" value = "on">ON
+			<input type="radio" name = "night_mode" value = "off">OFF			
+		</div>
+
+		<input type="submit" value = "Create" class = "btn btn-success">
+	</form>
+</div>
+<div class = 'container'>
+	<h4>My Missions</h4>
+	<table class = "table">
+		<tr>
+			<th>Mission Title</th>
+			<th>Start from</th>
+			<th>Last for</th>
+			<th>Alert Interval</th>
+			<th>Progress</th>
+			<th>Status</th>
+			<th>Action</th>
+			<th></th>
+		</tr>
+		<%@missions.each do |m|%>
+			<tr>
+				<td><%=m.title%></td>
+				<td><%=m.when_start_time.strftime('%H:%M:%S')%>--<%=m.when_start_date.strftime('%b %e,%Y')%></td>
+				<td><%=m.lasting%> days</td>
+				<td><%=m.interval%> minutes</td>
+				<td><%=m.check_count%>/<%=m.times%></td>
+				<td><%=m.status%></td>
+				<td>
+					<form action="/missions/<%=m.id%>" method = "post">
+						<input type="hidden" name = "authenticity_token" value = "<%=form_authenticity_token%>">
+						<input type="hidden" name = "_method" value = "delete">
+						<input type="submit" value = "Remove" class = "btn btn-danger">
+					</form>
+				</td>
+				<td>
+					<a href="/missions/<%=m.id%>/edit" class= "btn btn-primary">Check</a>
+				</td>
+
+			</tr>
+		<%end%>
+
+	</table>
+</div>
