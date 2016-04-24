@@ -10,6 +10,7 @@ class UsersController < ApplicationController
       @user.save
       session[:user_id] = @user.id
       redirect_to "/users/#{current_user.id}"
+      UserMailer.welcome_email(@user).deliver
     end
   end
 
@@ -19,6 +20,6 @@ class UsersController < ApplicationController
   
   private
   def user_params
-    params.require(:user).permit(:email,:first_name,:last_name,:phone,:password,:password_confirmation)
+    params.require(:user).permit(:email,:first_name,:last_name,:password,:password_confirmation)
   end
 end
