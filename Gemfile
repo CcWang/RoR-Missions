@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'pg', '~> 0.18.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -54,4 +54,4 @@ gem 'validates_timeliness', '~> 4.0'
 gem 'rails-footnotes', '~> 4.0'
 gem 'rufus-scheduler'
 gem 'twilio-ruby', '~> 4.2.1'
-
+gem 'rake', '11.1.2'
