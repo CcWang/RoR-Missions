@@ -10,7 +10,7 @@ class SchedulersController < ApplicationController
     times = mission.times
     c = 1
     # for demo purpose, we use second and mintues to replace mmintues and day
-    if interval >0 && mission.
+    if interval >0 
       counter.interval "#{interval}m",:times => times do
         UserMailer.send_mission(mission,c).deliver
         MissionsController.alertCount(mission,c)
