@@ -9,15 +9,18 @@ class SchedulersController < ApplicationController
     interval = mission.interval
     times = mission.times
     start_date = mission.when_start_date
-    start_time = mission.when_start_time
+    start_time = mission.when_start_time.strftime("%I:%M %p")
+    puts start_time
     c = 1
     
     if interval >0 
-      counter.interval "#{interval}m",:times => times do
-        UserMailer.send_mission(mission,c).deliver
-        MissionsController.alertCount(mission,c)
-        c +=1
+      counter.schedule "#{start_date} #{start_time}" do
+        counter.interval "#{interval}m",:times => times do
+          UserMailer.send_mission(mission,c).deliver
+          MissionsController.alertCount(mission,c)
+          c +=1
 
+        end
       end
     else
       counter.interval "20m",:times => times do
@@ -28,8 +31,8 @@ class SchedulersController < ApplicationController
     end
   end
 #please test
-  def self.destroy(mission)
-    counter = "scheduler"+mission.id.to_s
-    counter.kill if counter.running?
-  end
+  # def self.destroy(mission)
+  #   counter = "scheduler"+mission.id.to_s
+  #   counter.kill if counter.running?
+  # end
 end
