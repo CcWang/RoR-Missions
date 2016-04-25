@@ -22,9 +22,7 @@ ActiveRecord::Schema.define(version: 20160218194325) do
     t.integer  "interval"
     t.integer  "times"
     t.date     "when_start_date"
-    t.time     "when_start_time"
-    t.integer  "lasting"
-    t.boolean  "night_mode"
+    t.time     "when_start_time", default: '2000-01-01 20:12:49'
     t.integer  "check_count"
     t.integer  "alert_count"
     t.boolean  "status"
@@ -38,6 +36,7 @@ ActiveRecord::Schema.define(version: 20160218194325) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
+    t.string   "phone"
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"

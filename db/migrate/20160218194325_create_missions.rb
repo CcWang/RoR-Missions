@@ -7,8 +7,6 @@ class CreateMissions < ActiveRecord::Migration
       t.integer :times
       t.date :when_start_date
       t.time :when_start_time
-      t.integer :lasting
-      t.boolean :night_mode
       t.integer :check_count
       t.integer :alert_count
       t.boolean :status

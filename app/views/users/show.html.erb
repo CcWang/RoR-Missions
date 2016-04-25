@@ -29,19 +29,9 @@
 		<div class="form-group">
 			<label for="title">When shall we start</label><br>
 			Date:<input type="date" class="form-control" name = "when_start_date" id = "when_start" value = "<%=DateTime.now.to_date%>">
-			Time:<input type="time" class="form-control" name = "when_start_time" id = "when_start" >
+			Time:<input type="text" class="form-control" name = "when_start_time" id = "when_start" value="<%=Time.now.strftime('%I:%M %P')%>">
 			
 		</div>
-		<div class="form-group">
-			<label for="title">How long will it last (days)</label>
-			<input type="text" class="form-control" name = "lasting" id = "lasting">
-		</div>
-		<div class="form-group">
-			<label for="nightmode">Night Mode</label>
-			<input type="radio" name = "night_mode" value = "on">ON
-			<input type="radio" name = "night_mode" value = "off">OFF			
-		</div>
-
 		<input type="submit" value = "Create" class = "btn btn-success">
 	</form>
 </div>
@@ -62,7 +52,7 @@
 			<tr>
 				<td><%=m.title%></td>
 				<td><%=m.when_start_time.strftime('%H:%M:%S')%>--<%=m.when_start_date.strftime('%b %e,%Y')%></td>
-				<td><%=m.lasting%> days</td>
+				<td><%=m.times%> times</td>
 				<td><%=m.interval%> minutes</td>
 				<td><%=m.check_count%>/<%=m.times%></td>
 				<td><%=m.status%></td>
