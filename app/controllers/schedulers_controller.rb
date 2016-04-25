@@ -10,16 +10,16 @@ class SchedulersController < ApplicationController
     times = mission.times
     c = 1
     # for demo purpose, we use second and mintues to replace mmintues and day
-    if interval >0
-      counter.interval "#{interval}s",:times => times do
-        TwiliosController.message(mission,c)
+    if interval >0 && mission.
+      counter.interval "#{interval}m",:times => times do
+        UserMailer.send_mission(mission,c).deliver
         MissionsController.alertCount(mission,c)
         c +=1
 
       end
     else
-      counter.interval "20s",:times => times do
-        TwiliosController.message(mission,c)
+      counter.interval "20m",:times => times do
+        UserMailer.send_mission(mission,c).deliver
         MissionsController.alertCount(mission,c)
         c +=1
       end

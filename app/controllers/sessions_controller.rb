@@ -7,8 +7,6 @@ class SessionsController < ApplicationController
   	user = User.find_by_email(email)
   	if user && user.authenticate(params[:password])
   		session[:user_id] = user.id
-      UserMailer.welcome_email(user).deliver
-      puts ENV['email'];
   		redirect_to "/users/#{current_user.id}"
   	else
   		flash[:errors] = ['Invalid combination']

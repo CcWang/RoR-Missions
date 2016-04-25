@@ -8,4 +8,12 @@ class UserMailer < ActionMailer::Base
   	mail(to:@user.email,subject:'Welcome to Mission Checkers')
   	
   end
+
+  def send_mission(mission,c)
+  	@mission = mission
+  	@num = c
+  	@url = "http://localhost:3000/missions/#{mission.id}/edit"
+  	mail(to:@mission.user.email,subject:"It's time to check your Mission!---#{mission.title}")
+  	
+  end
 end
