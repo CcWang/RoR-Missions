@@ -6,7 +6,7 @@ If you finish your missions day by day, step by step, we will reward you some in
 The goal of our web is to help users keep tracking their missions/plans, also keep motivated.  
 ![alt tag](https://raw.githubusercontent.com/xinyzhang9/missions/master/img1.png)  
 ![alt tag](https://raw.githubusercontent.com/xinyzhang9/missions/master/img2.png)  
-![alt tag](https://raw.githubusercontent.com/xinyzhang9/missions/master/img3.png)  
+
 
 # Technoloy involved  
 Ruby on Rails, rufus-scheduler, twilio  
