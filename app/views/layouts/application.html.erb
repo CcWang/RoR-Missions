@@ -7,22 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<% if flash[:errors] %>
-	  <% flash[:errors].each do |e| %>
-	    <p><%= e %></p>
-	  <% end %>
-	<% end %>
-	<% if current_user %>
-	  <div>
-		  <form action='/sessions' method='post'>
-		    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
-		    <input type='hidden' name='_method' value='delete'>
-		    <input type='submit' value='Log Out' class = "btn btn-danger">
-		  </form>
-	  </div>
-	<% end %>
+<div class="container">
+  	<% if flash[:errors] %>
+  	  <% flash[:errors].each do |e| %>
+  	    <div><h3 class="text-center text-danger"><%= e %></h3></div>
+  	  <% end %>
+  	<% end %>
+  	<% if current_user %>
+  	  <div class="text-right">
+  		  <form action='/sessions' method='post'>
+  		    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+  		    <input type='hidden' name='_method' value='delete'>
+  		    <input type='submit' value='Log Out' class = "btn btn-danger">
+  		  </form>
+  	  </div>
+  	<% end %>
 
-<%= yield %>
-
+  <%= yield %>
+</div>
 </body>
 </html>

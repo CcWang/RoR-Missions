@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
   def index
+    if session[:user_id]
+      # reset_session
+      redirect_to "/users/#{session[:user_id]}"
+    end
   end
 
   def create
