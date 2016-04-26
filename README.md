@@ -9,7 +9,7 @@ The goal of our web is to help users keep tracking their missions/plans, also ke
 
 
 # Technoloy involved  
-Ruby on Rails, rufus-scheduler, twilio  
+Ruby on Rails, rufus-scheduler, Rails Mailer  
 # System dependencies  
   gem "twitter-bootstrap-rails"  
   gem 'bcrypt', '~> 3.1.7' 
@@ -17,7 +17,6 @@ Ruby on Rails, rufus-scheduler, twilio
   gem 'validates_timeliness', '~> 4.0'  
   gem 'rails-footnotes', '~> 4.0'  
   gem 'rufus-scheduler'  
-  gem 'twilio-ruby', '~> 4.2.1'  
   
 # Database creation  
   User table  
